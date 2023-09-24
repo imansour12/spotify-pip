@@ -3,7 +3,7 @@ import Failed from "./Failed/failed";
 
 export default function Spotify() {
     const [searchParams, setSearchParams] = useSearchParams();
-    console.log(searchParams.get("error"))
+
     if (searchParams.get("error")) {
         return (<Failed />)
     }

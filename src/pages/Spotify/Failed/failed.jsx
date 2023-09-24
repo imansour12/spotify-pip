@@ -19,14 +19,25 @@ export default function Failed() {
                 width: "100vw",
             }}
         >
-            <Typography>Oops, that didn't quite work.</Typography>
+            <Typography
+                style={{ fontFamily: "GothamBook" }}
+                variant="h2"
+                color={"#fff"}
+
+            >Oops, that didn't quite work.</Typography>
             <br />
-            <Typography>Try again ?</Typography>
+            <Typography
+
+                style={{ fontFamily: "GothamBook" }}
+                variant="h3"
+                color={"#fff"}
+
+            >Try again ?</Typography>
             <br />
             <Button
                 href={`${VITE_AUTH_ENDPOINT}?client_id=${VITE_CLIENT_ID}&redirect_uri=${VITE_REDIRECT_URI}&response_type=${VITE_RESPONSE_TPYPE}`}
                 variant="contained"
-                style={{ color: "white", backgroundColor: "#1DB954", textTransform: "none" }}
+                style={{ color: "white", backgroundColor: "#1DB954", textTransform: "none", borderRadius: "50px", fontFamily: "GothamBook", fontSize: 20 }}
             >
                 Login to Spotify
             </Button>
