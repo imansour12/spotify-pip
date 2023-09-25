@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import path from "path"
+import mkcert from "vite-plugin-mkcert"
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -12,5 +13,9 @@ export default defineConfig({
       "@assets": path.resolve(__dirname, "./src/assets"),
     }
   },
-  plugins: [react()],
+  //Document Picture-in-Picture API only works on HTTPS
+  server: {
+    https: true,
+  },
+  plugins: [react(), mkcert()],
 })

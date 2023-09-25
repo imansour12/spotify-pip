@@ -27,9 +27,7 @@ export default function Home() {
                 Login to Spotify
             </a>
 
-            <h1 style={{ colo: "black" }}>hello</h1>
             <div onClick={openPictureInPicture}>Open counter</div>
-
         </>
     )
 }

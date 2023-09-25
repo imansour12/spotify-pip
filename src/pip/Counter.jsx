@@ -22,7 +22,7 @@ const Counter = () => {
             </div>
         );
     } catch (error) {
-        console.error("ERROR_CODE: _RENDER\n", error);
+        console.error("Error rendering Picture in Picture", error);
         return <></>;
     }
 };
