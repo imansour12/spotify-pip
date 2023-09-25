@@ -1,3 +1,6 @@
+import Counter from "../../pip/Counter"
+import ReactDOM from "react-dom/client";
+
 export default function Home() {
 
     const {
@@ -6,6 +9,15 @@ export default function Home() {
         VITE_AUTH_ENDPOINT,
         VITE_RESPONSE_TPYPE,
     } = import.meta.env;
+
+    async function openPictureInPicture() {
+        const pipWindow = await window.documentPictureInPicture.requestWindow();
+        const pipDiv = pipWindow.document.createElement("div");
+        pipDiv.setAttribute("id", "pip-root");
+        pipWindow.document.body.append(pipDiv);
+        const PIP_ROOT = ReactDOM.createRoot(pipWindow.document.getElementById("pip-root"));
+        PIP_ROOT.render(<Counter />);
+    }
 
     return (
         <>
@@ -16,6 +28,8 @@ export default function Home() {
             </a>
 
             <h1 style={{ colo: "black" }}>hello</h1>
+            <div onClick={openPictureInPicture}>Open counter</div>
+
         </>
     )
 }
