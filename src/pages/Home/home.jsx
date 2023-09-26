@@ -1,3 +1,4 @@
+import signedIn from "@hooks/signedIn";
 import Counter from "../../pip/Counter"
 import ReactDOM from "react-dom/client";
 
@@ -18,14 +19,16 @@ export default function Home() {
         const PIP_ROOT = ReactDOM.createRoot(pipWindow.document.getElementById("pip-root"));
         PIP_ROOT.render(<Counter />);
     }
+    console.log(signedIn())
 
     return (
         <>
-            <a
-                href={`${VITE_AUTH_ENDPOINT}?client_id=${VITE_CLIENT_ID}&redirect_uri=${VITE_REDIRECT_URI}&response_type=${VITE_RESPONSE_TPYPE}`}
-            >
-                Login to Spotify
-            </a>
+            {!signedIn() ?
+                <a
+                    href={`${VITE_AUTH_ENDPOINT}?client_id=${VITE_CLIENT_ID}&redirect_uri=${VITE_REDIRECT_URI}&response_type=${VITE_RESPONSE_TPYPE}&scope=user-read-currently-playing`}
+                >
+                    Login to Spotify
+                </a> : <></>}
 
             <div onClick={openPictureInPicture}>Open counter</div>
         </>
