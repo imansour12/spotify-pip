@@ -5,7 +5,7 @@ import { useEffect } from "react";
 
 export default function Lyrics(bgColor) {
     const theme = useColorChecker(bgColor.bgColor);
-    console.log(theme)
+
     return (
         <div style={{
             display: "flex",

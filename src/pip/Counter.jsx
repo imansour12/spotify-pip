@@ -6,7 +6,8 @@ import { usePalette } from "react-palette";
 import getCurrentSong from "@hooks/getCurrentSong";
 import getSongImage from "@hooks/getSongImage";
 import { useHookstate } from "@hookstate/core";
-import { playerState } from "@state/player";
+import { playerState, setTrackId } from "@state/player";
+import getSongLyrics from "@hooks/getSongLyrics";
 
 const Counter = () => {
     const [song, setSong] = useState({});
@@ -14,15 +15,23 @@ const Counter = () => {
     const { data } = usePalette(image);
 
     const player = useHookstate(playerState);
-    const { isPlaying, canvasAvailable, lyricsAvailable, trackId } = player.get();
+    const { isPlaying, canvasAvailable, lyricsAvailable, trackId, lyrics } = player.get();
 
     const updateSong = async () => {
         getCurrentSong().then((res) => {
+            if (res.item.id === trackId) {
+                console.log("Has not changed , old id", trackId, "new id", res.item.id)
+            } else {
+                console.log("changed from ", trackId, "to", res.item.id)
+                getSongLyrics(res.item.id)
+            }
             getSongImage(res.item.uri).then((res) => {
                 setImage(res)
             })
             setSong(res);
+            setTrackId(res.item.uri.split(":")[2])
         })
+
         return updateSong
     }
 
@@ -39,7 +48,7 @@ const Counter = () => {
             worker.postMessage('stop');
             worker.terminate();
         };
-    }, []);
+    }, [trackId, setTrackId]);
 
     try {
         return (

@@ -3,14 +3,12 @@ import { setTrackId } from "@state/player";
 
 export default async function getSongImage(songId) {
     songId = songId.split(':')[2];
-    setTrackId(songId);
     try {
         const response = await axios.get(`https://api.spotify.com/v1/tracks/${songId}`, {
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('spotToken')}`
             }
         });
-        console.log(response.data.album.images[0].url);
         return response.data.album.images[0].url;
     }
     catch (error) {
