@@ -7,7 +7,8 @@ import { playerState } from "@state/player";
 
 export default function Lyrics(progress, bgColor) {
     const [currentLyric, setCurrentLyrics] = useState("")
-    const back = Math.random() < 0.5 ? progress.bgColor.darkVibrant : progress.bgColor.lightVibrant
+    const userTheme = localStorage.getItem("themePref")
+    const back = userTheme === "dark" ? progress.bgColor.darkVibrant : progress.bgColor.lightVibrant
     const theme = useColorChecker(back);
     useEffect(() => {
         progress.worrs.lines.forEach((line) => {
@@ -31,6 +32,7 @@ export default function Lyrics(progress, bgColor) {
             zIndex: -1,
             maxWidth: "100%",
             maxHeight: "100%",
+            transition: "background-color 1s ease",
             backgroundColor: back,
         }}>
             {currentLyric === "♪" ?

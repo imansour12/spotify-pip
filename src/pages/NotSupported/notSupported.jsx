@@ -19,7 +19,7 @@ export default function NotSupported() {
                 //don't let it get to the sides too much
                 style={{ maxWidth: "60vw" }}
 
-            >Looks like you are using an old browser, which is not supported by this website. Please, only use Google Chrome or make sure your browser is updated to the latest version for the best user experience.</Typography>
+            >Looks like you are using an old browser, which is not supported by this website. Please, only use Google Chrome and/or make sure your browser is updated to the latest version for the best user experience.</Typography>
         </Box>
     )
 }
