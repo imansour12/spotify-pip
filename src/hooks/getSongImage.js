@@ -1,9 +1,9 @@
 import axios from "axios";
+import { setTrackId } from "@state/player";
 
 export default async function getSongImage(songId) {
-    //split the song Id from spotify:track:4mOMTUl8XiaqILHwh8zm4H  to 4mOMTUl8XiaqILHwh8zm4H
     songId = songId.split(':')[2];
-    console.log(songId);
+    setTrackId(songId);
     try {
         const response = await axios.get(`https://api.spotify.com/v1/tracks/${songId}`, {
             headers: {

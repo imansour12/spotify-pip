@@ -16,6 +16,22 @@ export default function Home() {
         const pipDiv = pipWindow.document.createElement("div");
         pipDiv.setAttribute("id", "pip-root");
         pipWindow.document.body.append(pipDiv);
+        const style = pipWindow.document.createElement("style");
+        style.innerHTML = `
+        @font-face{
+            font-family: 'GothamBold';
+            src: url('/GothamBold.ttf');
+        }
+        @font-face{
+            font-family: 'LinikSans';
+            src: url('/LinikSans.ttf');
+        }
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        `
+        pipWindow.document.head.append(style);
         const PIP_ROOT = ReactDOM.createRoot(pipWindow.document.getElementById("pip-root"));
         PIP_ROOT.render(<Counter />);
     }

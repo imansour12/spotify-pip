@@ -11,6 +11,7 @@ export default defineConfig({
       "@pages": path.resolve(__dirname, "./src/pages"),
       "@hooks": path.resolve(__dirname, "./src/hooks"),
       "@assets": path.resolve(__dirname, "./src/assets"),
+      "@state": path.resolve(__dirname, "./src/state"),
     }
   },
   //Document Picture-in-Picture API only works on HTTPS

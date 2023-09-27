@@ -11,7 +11,11 @@ const getCurrentSong = async () => {
         });
         return response.data;
     } catch (error) {
-        console.log(error);
+        console.log(error.response.data.error.message);
+        if (error.response.data.error.message === 'The access token expired') {
+            localStorage.removeItem('spotToken');
+            window.location.reload();
+        }
         return null
     }
 }
