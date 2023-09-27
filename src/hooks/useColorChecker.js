@@ -11,6 +11,7 @@ const useColorChecker = (color) => {
         return luminance < threshold ? 'dark' : 'light';
     };
     const type = isColorDark(color);
+    console.log(type)
     return type;
 };
 

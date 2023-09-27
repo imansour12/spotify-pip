@@ -1,11 +1,23 @@
 import { Typography, Box } from "@mui/material"
 import WebFont from "webfontloader"
 import useColorChecker from "@hooks/useColorChecker";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { useHookstate } from "@hookstate/core";
+import { playerState } from "@state/player";
 
-export default function Lyrics(bgColor) {
-    const theme = useColorChecker(bgColor.bgColor);
-
+export default function Lyrics(progress, bgColor) {
+    const [currentLyric, setCurrentLyrics] = useState("")
+    const back = Math.random() < 0.5 ? progress.bgColor.darkVibrant : progress.bgColor.lightVibrant
+    const theme = useColorChecker(back);
+    useEffect(() => {
+        progress.worrs.lines.forEach((line) => {
+            if (line.startTimeMs <= progress.progress) {
+                console.log(line.words)
+                setCurrentLyrics(line.words)
+            }
+        })
+    }, [currentLyric, setCurrentLyrics, progress])
+    console.log(theme)
     return (
         <div style={{
             display: "flex",
@@ -19,9 +31,17 @@ export default function Lyrics(bgColor) {
             zIndex: -1,
             maxWidth: "100%",
             maxHeight: "100%",
-            backgroundColor: bgColor.bgColor,
+            backgroundColor: back,
         }}>
-            <Typography style={{ fontFamily: "GothamBold" }}>fkdjf</Typography>
+            {currentLyric === "♪" ?
+                <Typography style={{
+                    fontFamily: "GothamBold", fontSize: "70", textAlign: "center",
+                    color: theme === "dark" ? "white" : "black"
+                }}>♪</Typography> :
+                <Typography style={{
+                    fontFamily: "GothamBold", textAlign: "center", fontSize: "25",
+                    color: theme === "dark" ? "white" : "black"
+                }}>{currentLyric}</Typography>}
         </div>
     )
 }

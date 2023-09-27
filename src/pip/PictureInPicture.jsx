@@ -9,7 +9,7 @@ import { useHookstate } from "@hookstate/core";
 import { playerState, setTrackId } from "@state/player";
 import getSongLyrics from "@hooks/getSongLyrics";
 
-const Counter = () => {
+const PictureInPicture = () => {
     const [song, setSong] = useState({});
     const [image, setImage] = useState("");
     const { data } = usePalette(image);
@@ -56,7 +56,7 @@ const Counter = () => {
                 margin: 0,
                 padding: 0
             }}>
-                <Lyrics bgColor={data.darkMuted} />
+                {lyricsAvailable ? <Lyrics worrs={lyrics} progress={song.progress_ms} bgColor={data} /> : <Canvas image={image} />}
             </div>
         );
     } catch (error) {
@@ -65,4 +65,4 @@ const Counter = () => {
     }
 };
 
-export default Counter;
+export default PictureInPicture;

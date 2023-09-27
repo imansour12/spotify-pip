@@ -1,5 +1,5 @@
 import signedIn from "@hooks/signedIn";
-import Counter from "../../pip/Counter"
+import Counter from "../../pip/PictureInPicture"
 import ReactDOM from "react-dom/client";
 
 export default function Home() {
