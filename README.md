@@ -66,6 +66,13 @@ This will launch the Spotify PiP application, allowing you to enjoy a better Spo
 
 Feel free to contribute, report issues, or suggest improvements. We hope you enjoy using Spotify PiP!
 
+## Roadmap
+
+- [ ] Add logo and artist name and song name at the top
+- [ ] Add music visualizers
+- [ ] Add homepage
+- [ ] Add settings menu
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](https://github.com/imansour12/spotify-pip/blob/main/LICENSE) file for details.
